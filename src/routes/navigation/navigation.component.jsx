@@ -2,12 +2,12 @@ import { Outlet, Link } from "react-router";
 import { useContext } from "react";
 import { NavigationContainer, LogoContainer, NavLinks, NavLink } from './navigation.styles';
 
-import CrwnLogo  from '../../../assets/crown.svg?react';
-import CartIcon from "../../cart-icon/cart-icon.component";
-import CartDropdown from "../../cart-dropdown/cart-dropdown.component";
-import { CartContext } from "../../../contexts/cart.context";
-import { UserContext } from "../../../contexts/user.context";
-import { SignOutUser } from "../../../utils/firebase/firebase";
+import CrwnLogo  from '../../assets/crown.svg?react';
+import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+import { CartContext } from "../../contexts/cart.context";
+import { UserContext } from "../../contexts/user.context";
+import { SignOutUser } from "../../utils/firebase/firebase";
 
 
 const Navigation = () =>

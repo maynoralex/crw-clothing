@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router'
 import './shop.styles.scss'
-import CategoriesPreview from '../routes/categories-preview/categories-preview.component'
-import Category from '../routes/category/category.component'
+import CategoriesPreview from '../categories-preview/categories-preview.component'
+import Category from '../category/category.component'
+
 
 const Shop = () => {
     //const { categoriesMap } = useContext(CategoriesContext);
