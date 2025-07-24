@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { OnAuthStateChangedListener, createUserDocFromAuth } from "../utils/firebase/firebase";
+import { onAuthStateChangedListener, createUserDocFromAuth } from "../utils/firebase/firebase";
 
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
 
 
     useEffect(() => {
-        const unsubscribe = OnAuthStateChangedListener((user) => {
+        const unsubscribe = onAuthStateChangedListener((user) => {
             if(user)
                 createUserDocFromAuth(user);
             setCurrentUser(user);
