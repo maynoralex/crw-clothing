@@ -35,7 +35,6 @@ export const addCollectionAndDocuments = async(collectionKey, objectsToAdd) => {
 export const getCollectionAndDocuments = async () => {
     const collectionRef = collection(db, 'categories');
     const q = query(collectionRef);
-
     const querySnapshot = await getDocs(q);
     
     return querySnapshot.docs.map((docSnapShot) => docSnapShot.data());
@@ -53,8 +52,6 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
 export const createUserDocFromAuth = async(userAuth, additionalInformation = {}) => {
     const userDocRef = doc(db, "users", userAuth.uid);
     const userSnapshot = await getDoc(userDocRef);
-    
-
     if(!userSnapshot.exists()) {
         const { displayName, email } = userAuth;
         const createdAt = new Date();
