@@ -1,18 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { logger } from 'redux-logger'
-// import { persistStore, persistReducer } from 'redux-persist'
-// import storage from 'redux-persist/lib/storage'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import { rootReducer } from './root-reducer'
 
 
 
-// const persistConfig = {
-//     key: 'root',
-//     storage,
-//     blacklist: ['user']
-// }
+const persistConfig = {
+    key: 'root',
+    storage,
+    blacklist: ['user']
+}
 
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const middleWares = [import.meta.env.MODE !== 'production' && logger].filter(
     Boolean
@@ -21,11 +21,11 @@ const middleWares = [import.meta.env.MODE !== 'production' && logger].filter(
 
 
 export const store = configureStore({
-    reducer: rootReducer,
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false
     }).concat(middleWares)
 });
 
 
-//export const persistor = persistStore(store);
+export const persistor = persistStore(store);
