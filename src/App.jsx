@@ -7,7 +7,7 @@ import Checkout from './routes/checkout/checkout.component.jsx'
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-import { setCurrentUser } from './store/user/user.action'
+import { setCurrentUser } from './store/user/user.reducer'
 
 import {
   onAuthStateChangedListener,
@@ -24,6 +24,7 @@ const App = () => {
             if(user) {
                 createUserDocFromAuth(user);
             }
+            console.log(setCurrentUser(user));
             dispatch(setCurrentUser(user));
             
         });

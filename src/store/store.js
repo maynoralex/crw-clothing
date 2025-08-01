@@ -1,32 +1,31 @@
-import { compose, createStore, applyMiddleware } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import { logger } from 'redux-logger'
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+// import { persistStore, persistReducer } from 'redux-persist'
+// import storage from 'redux-persist/lib/storage'
 import { rootReducer } from './root-reducer'
 
 
 
+// const persistConfig = {
+//     key: 'root',
+//     storage,
+//     blacklist: ['user']
+// }
 
-const persistConfig = {
-    key: 'root',
-    storage,
-    blacklist: ['user']
-}
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const middleWares = [import.meta.env.MODE !== 'production' && logger].filter(
     Boolean
 );
 
 
-const composeEnhancer = (import.meta.env.MODE!== 'production' && 
-    window &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || 
-compose;
 
-const composedEnhancers = composeEnhancer(applyMiddleware(...middleWares));
+export const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false
+    }).concat(middleWares)
+});
 
-export const store = createStore(persistedReducer, undefined, composedEnhancers);
 
-export const persistor = persistStore(store);
+//export const persistor = persistStore(store);

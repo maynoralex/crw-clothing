@@ -5,7 +5,7 @@ import './shop.styles.scss'
 import CategoriesPreview from '../categories-preview/categories-preview.component'
 import Category from '../category/category.component'
 import { getCollectionAndDocuments } from '../../utils/firebase/firebase'
-import { setCategories } from '../../store/category/category.action'
+import { setCategories } from '../../store/category/category.reducer'
 
 
 const Shop = () => {
