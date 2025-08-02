@@ -2,7 +2,7 @@
 button types:
   default, inverted, google
 */
-import { BaseButton, GoogleSignInButton, InvertedButton } from './button.styles'
+import { BaseButton, GoogleSignInButton, InvertedButton, ButtonSpinner } from './button.styles'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const BUTTON_TYPE_CLASSES = {
@@ -18,11 +18,11 @@ const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) => ({
     }[buttonType]);
 
 
-const Button = ({children, buttonType, ...otherProps}) => {
+const Button = ({children, buttonType, isLoading, ...otherProps}) => {
     const CustomButton = getButton(buttonType);
     return (
-        <CustomButton {...otherProps}>
-            {children}
+        <CustomButton disabled={isLoading} {...otherProps}>
+            {isLoading ? <ButtonSpinner/> : children}
         </CustomButton>
     );
 
