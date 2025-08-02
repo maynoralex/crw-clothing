@@ -46,8 +46,8 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState: CART_INITIAL_STATE,
     reducers: {
-        setIsCartOpen(state, payload) {
-            state.isCartOpen = payload;
+        setIsCartOpen(state, action) {
+            state.isCartOpen = action.payload;
         },
         addItemToCart(state, action) {
             state.cartItems = addCartItem(state.cartItems, action.payload);
