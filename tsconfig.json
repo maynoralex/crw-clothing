@@ -27,13 +27,15 @@
     /* Path Aliases */
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["vite/client"]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue" // Add this if you're using Vue
+    "src/**/*.vue",  // Add this if you're using Vue
+    "vite-env.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
